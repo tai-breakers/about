@@ -38,7 +38,7 @@ const observer = new IntersectionObserver(function (entries) {
 });
 
 // Observe each section and fire the observer callback when scrolling.
-const sections = ['home', 'members', 'achievements', 'recruitment']
+const sections = ['home', 'members', 'decklists', 'placements', 'recruitment']
   .map(function (id) { return document.getElementById(id); })
   .filter(function (el) { return el !== null; });
 
