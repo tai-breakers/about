@@ -45,3 +45,22 @@ const sections = ['home', 'members', 'decklists', 'placements', 'recruitment']
 sections.forEach(function (section) {
   observer.observe(section);
 });
+
+// Toggle the info panel below a decklist image when it's clicked, closing any other open panel.
+const decklistEntries = document.querySelectorAll('.decklist-entry');
+
+decklistEntries.forEach(function (img) {
+  const info = img.nextElementSibling;
+  info.querySelector('.decklist-info-title').textContent = img.dataset.title;
+  info.querySelector('.decklist-info-desc').textContent = img.dataset.desc;
+  const link = info.querySelector('.decklist-info-link');
+  link.href = img.dataset.url;
+
+  img.addEventListener('click', function () {
+    const wasVisible = info.classList.contains('visible');
+    decklistEntries.forEach(function (otherImg) {
+      otherImg.nextElementSibling.classList.remove('visible');
+    });
+    if (!wasVisible) info.classList.add('visible');
+  });
+});
